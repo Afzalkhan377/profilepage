@@ -35,6 +35,8 @@ class MainActivity : ComponentActivity() {
 }
 @Composable
 fun ProfileScreen() {
+    //variable that tracks if following
+    //made it false for now so when pressed becomes true and the snack bar pops up
     var isFollowing by remember { mutableStateOf(false) }
 
     Box(
@@ -53,9 +55,10 @@ fun ProfileScreen() {
                 contentDescription = "Profile Picture",
                 modifier = Modifier
                     .size(200.dp)
+                    //gives circular shape
                     .clip(CircleShape)
             )
-
+            //add space
             Spacer(modifier = Modifier.height(12.dp))
 
             Text(text = "Lebron James", fontSize = 20.sp, color = Color.Black)
@@ -63,7 +66,7 @@ fun ProfileScreen() {
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = "hooper | The GOAT",
+                text = "The best hooper of all time and",
                 fontSize = 14.sp,
                 color = Color.Gray
             )
@@ -72,6 +75,7 @@ fun ProfileScreen() {
 
             // Follow Button
             Button(onClick = {
+                //when button clicked the variable becomes true
                 isFollowing = true
             }) {
                 Text("Follow")
@@ -84,6 +88,7 @@ fun ProfileScreen() {
         if (isFollowing) {
             Snackbar(
                 modifier = Modifier
+                    //appears at bottom
                     .align(Alignment.BottomCenter)
                     .padding(16.dp)
             ) {
